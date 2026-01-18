@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pour Soraya ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .cover {
+            text-align: center;
+            padding: 100px 20px;
+            color: white;
+            animation: fadeIn 2s ease-in;
+        }
+
+        .cover h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .cover p {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+        }
+
+        .start-btn {
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .start-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .chapter {
+            display: none;
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            margin: 40px 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            animation: slideIn 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chapter.active {
+            display: block;
+        }
+
+        .bg-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            z-index: 0;
+            background-size: cover;
+            background-position: center;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .chapter-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .chapter-number {
+            color: #667eea;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .chapter h2 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .chapter p {
+            font-size: 1.3em;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            animation: floatHeart 6s ease-in-out infinite;
+            opacity: 0;
+        }
+
+        .nav-buttons {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(0,0,0,0.3);
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 15px;
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes glow {
+            from { text-shadow: 2px 2px 10px rgba(255,255,255,0.3); }
+            to { text-shadow: 2px 2px 20px rgba(255,255,255,0.8); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        @keyframes floatHeart {
+            0% { 
+                bottom: -50px; 
+                opacity: 0;
+                transform: translateX(0) rotate(0deg);
+            }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { 
+                bottom: 100%; 
+                opacity: 0;
+                transform: translateX(100px) rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cover h1 { font-size: 2.5em; }
+            .chapter { padding: 40px 20px; }
+            .chapter h2 { font-size: 2em; }
+            .chapter p { font-size: 1.1em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Page de couverture -->
+        <div id="cover" class="cover">
+            <h1>Pour Soraya ❤️</h1>
+            <p>Un message spécial pour toi...</p>
+            <button class="start-btn" onclick="startReading()">Ouvrir le livre</button>
+        </div>
+
+        <!-- Chapitre 1 -->
+        <div id="chapter1" class="chapter">
+            <div class="bg-animation"></div>
+            <div class="hearts" id="hearts1"></div>
+            <div class="chapter-content">
+                <div class="chapter-number">CHAPITRE 1</div>
+                <h2>Pourquoi je t'aime</h2>
+                
+                <p>Parce que ton sourire illumine mes journées. Quand tu ris, c'est comme si le monde entier s'arrêtait juste pour nous. Tu es ma lumière dans l'obscurité.</p>
+                
+                <p>Parce que tu es belle, tellement belle que parfois j'ai du mal à croire que tu es à moi. Mais ta vraie beauté, elle vient de ton âme, de ton cœur immense, de ta gentillesse naturelle.</p>
+                
+                <img src="photo1.jpg" alt="Nous deux" style="width:100%; height:400px; object-fit:cover; border-radius:15px; box-shadow: 0 5px 20px rgba(0,0,0,0.2);">
+                
+                <p>Parce que tu es drôle et spontanée. Avec toi, chaque moment devient magique, même les plus simples. Tu transformes l'ordinaire en extraordinaire.</p>
+                
+                <p>Parce que tu es forte, intelligente, et tellement inspirante. Tu me donnes envie d'être la meilleure version de moi-même. Tu me rends meilleur simplement en étant toi.</p>
+                
+                <div class="nav-buttons">
+                    <button class="nav-btn" onclick="showChapter(2)">Chapitre suivant →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chapitre 2 -->
+        <div id="chapter2" class="chapter">
+            <div class="bg-animation"></div>
+            <div class="hearts" id="hearts2"></div>
+            <div class="chapter-content">
+                <div class="chapter-number">CHAPITRE 2</div>
+                <h2>Pourquoi toi et personne d'autre</h2>
+                
+                <p>Sur cette planète, il y a des milliards de personnes. Mais aucune, absolument aucune, ne pourrait jamais prendre ta place dans mon cœur.</p>
+                
+                <p>Parce que tu me comprends sans que j'aie besoin de parler. Tu lis dans mes yeux, dans mes silences. Tu connais mon âme mieux que personne.</p>
+                
+                <img src="photo2.jpg" alt="Ensemble" style="width:100%; height:400px; object-fit:cover; border-radius:15px; box-shadow: 0 5px 20px rgba(0,0,0,0.2);">
+                
+                <p>Parce qu'entre nous, c'est différent. C'est spécial. C'est une connexion que je ne peux pas expliquer avec des mots. C'est comme si nos âmes se reconnaissaient depuis toujours.</p>
+                
+                <p>Tu n'es pas "quelqu'un" parmi tant d'autres. Tu es TOI. Unique, irremplaçable, parfaite dans tes imperfections. Et c'est exactement toi dont j'ai besoin, pour toujours.</p>
+                
+                <div class="nav-buttons">
+                    <button class="nav-btn" onclick="showChapter(1)">← Chapitre précédent</button>
+                    <button class="nav-btn" onclick="showChapter(3)">Chapitre final →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chapitre 3 -->
+        <div id="chapter3" class="chapter">
+            <div class="bg-animation"></div>
+            <div class="hearts" id="hearts3"></div>
+            <div class="chapter-content">
+                <div class="chapter-number">CHAPITRE 3</div>
+                <h2>Tu es toute ma vie</h2>
+                
+                <p>Chaque battement de mon cœur prononce ton nom. Tu n'es pas juste une partie de ma vie, tu ES ma vie.</p>
+                
+                <p>Avec toi, j'ai trouvé mon chez-moi. Peu importe où nous sommes, tant que je suis avec toi, je suis à ma place.</p>
+                
+                <img src="photo3.jpg" alt="Mon amour" style="width:100%; height:400px; object-fit:cover; border-radius:15px; box-shadow: 0 5px 20px rgba(0,0,0,0.2);">
+                
+                <p>Je veux construire un avenir avec toi. Je veux tous les matins, tous les soirs, toutes les aventures. Je veux tes bons jours et tes mauvais jours.</p>
+                
+                <p>Tu es mon rêve devenu réalité, mon plus grand bonheur, mon amour infini.</p>
+                
+                <p style="text-align: center; font-size: 1.5em; margin-top: 40px; color: #667eea;">
+                    <strong>Joyeux anniversaire, Soraya ❤️</strong><br>
+                    Je t'aime plus que les mots ne pourront jamais le dire.
+                </p>
+                
+                <div class="nav-buttons">
+                    <button class="nav-btn" onclick="showChapter(2)">← Chapitre précédent</button>
+                    <button class="nav-btn" onclick="showChapter(1)">↻ Relire depuis le début</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function startReading() {
+            document.getElementById('cover').style.display = 'none';
+            showChapter(1);
+        }
+
+        function showChapter(num) {
+            const chapters = document.querySelectorAll('.chapter');
+            chapters.forEach(ch => ch.classList.remove('active'));
+            document.getElementById('chapter' + num).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            createHearts('hearts' + num);
+        }
+
+        function createHearts(containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            for(let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 6 + 's';
+                heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                container.appendChild(heart);
+            }
+        }
+
+        // Créer des cœurs pour la page de couverture
+        setInterval(() => {
+            if(document.getElementById('cover').style.display !== 'none') {
+                const heart = document.createElement('div');
+                heart.style.position = 'fixed';
+                heart.style.fontSize = '40px';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.bottom = '-50px';
+                heart.innerHTML = '❤️';
+                heart.style.animation = 'floatHeart 6s ease-in-out';
+                heart.style.pointerEvents = 'none';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 6000);
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
